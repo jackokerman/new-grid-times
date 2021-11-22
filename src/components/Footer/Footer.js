@@ -1,9 +1,10 @@
-import React from 'react';
-import { Twitter, Facebook } from 'react-feather';
-import styled from 'styled-components/macro';
-import MaxWidthWrapper from '../MaxWidthWrapper';
+import React from "react";
+import { Twitter, Facebook } from "react-feather";
+import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
+import MaxWidthWrapper from "../MaxWidthWrapper";
 
-import VisuallyHidden from '../VisuallyHidden';
+import VisuallyHidden from "../VisuallyHidden";
 
 const Footer = () => {
   return (
@@ -25,15 +26,11 @@ const Footer = () => {
           </nav>
           <Social>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Facebook
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Facebook</VisuallyHidden>
               <Facebook size={20} />
             </a>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Twitter
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Twitter</VisuallyHidden>
               <Twitter size={20} />
             </a>
           </Social>
@@ -144,6 +141,16 @@ const TopRow = styled.div`
   font-size: 0.875rem;
   border-bottom: 1px solid var(--color-gray-700);
   padding: 24px 0;
+
+  @media ${QUERIES.tabletAndUp} {
+    flex-direction: row;
+    justify-content: center;
+    gap: 48px;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    justify-content: flex-end;
+  }
 `;
 
 const Social = styled.div`
@@ -165,11 +172,15 @@ const TopNavList = styled.ul`
 `;
 
 const MainNavArea = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 32px;
   padding: 32px 0 48px;
   text-align: center;
+
+  @media ${QUERIES.tabletAndUp} {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    text-align: left;
+  }
 `;
 
 const MainNavHeading = styled.h2`
@@ -196,6 +207,10 @@ const Subfooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${QUERIES.laptopAndUp} {
+    align-items: flex-start;
+  }
 `;
 
 const Logo = styled.a`
